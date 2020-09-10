@@ -37,7 +37,13 @@ public class RedesController {
 					ln = buffer.readLine ( );
 				}
 			} else if ( SO_name.contains( "linux" )) {
-				
+				while ( ln != null ) {
+                    if ( ln.contains ( "inet ")) {
+                        String s[] = ln.trim().split(" ");
+                        System.out.println( s[0] + " " + s[1]);
+                    }
+                    ln = buffer.readLine ( );
+                }
 			} else {
 				return; // not supported so
 			}
@@ -79,7 +85,13 @@ public class RedesController {
 					ln = buffer.readLine ( );
 				}
 			} else if ( SO_name.contains ( "linux" )) {
-				
+				while ( ln != null){
+                    if ( ln.contains ( "rtt ")) {
+                        String s[] = ln.trim().split("/");
+                        System.out.println("avg --> " + s[4] + "ms");
+                    }
+                    ln = buffer.readLine ( );
+                }
 			} else {
 				return; // not supported so
 			}
